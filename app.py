@@ -50,7 +50,7 @@ def click_handler():
     # Логируем нажатие на кнопку
     log_visitor("CLICKED BUTTON!")
     # ЗАМЕНИ ССЫЛКУ НИЖЕ НА СВОЮ
-    return redirect("https://safeoffers.pro/a/W9EBc4WqhxBgV")
+    return redirect("https://tone.affomelody.com/click?pid=95009&offer_id=25&sub1=Liz April")
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
