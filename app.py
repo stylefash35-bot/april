@@ -3,7 +3,7 @@ import requests
 from flask import Flask, render_template, request, redirect
 from datetime import datetime
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/templates', static_folder='templates')
 
 # Список ботов для защиты (клоакинга)
 BOT_SIGNATURES = ['googlebot', 'facebookexternalhit', 'twitterbot', 'linkedinbot', 'bot', 'spider', 'crawl']
