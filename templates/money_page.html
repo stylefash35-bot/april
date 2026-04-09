@@ -3,93 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Liz April | Digital Creator</title>
-  <style>
-    body, html {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        overflow: hidden;
-    }
+    <title>Доступ ограничен</title>
+    <style>
+        * { box-sizing: border-box; }
+        body, html { 
+            margin: 0; padding: 0; height: 100%; 
+            background: #000; font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            overflow: hidden; 
+        }
+        
+        /* Фон - твоя картинка 2.jpg БЕЗ РАЗМЫТИЯ */
+        .bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('2.jpg') no-repeat center top;
+            background-size: cover;
+            filter: brightness(0.5); /* Убрали blur, оставили затемнение для читаемости текста */
+            z-index: 1;
+        }
 
-    /* ЗАДНИЙ ФОН: Фото 2 */
-    .background-image {
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                          url('/templates/2.jpg'); 
-        background-size: cover;
-        background-position: center;
-        z-index: -2;
-    }
+        .content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            height: 100%;
+            padding: 40px 25px;
+            /* Градиент снизу вверх для плавного перехода к черному фону */
+            background: linear-gradient(to bottom, transparent 20%, rgba(0,0,0,0.6) 50%, #000 95%);
+            text-align: center;
+        }
 
-    .blur-overlay {
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 100%;
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        background: rgba(0, 0, 0, 0.2);
-        z-index: -1;
-    }
+        .lock { font-size: 14px; margin-bottom: 15px; color: #fff; opacity: 0.7; letter-spacing: 1px; font-weight: 300; }
+        
+        h1 { font-size: 30px; color: #fff; margin: 0 0 10px 0; font-weight: 900; line-height: 1.1; text-transform: uppercase; }
+        
+        p { font-size: 17px; color: #fff; margin-bottom: 35px; line-height: 1.4; opacity: 0.9; font-weight: 400; }
 
-    .main-container {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-        color: white;
-        text-align: center;
-    }
+        .btn-main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 320px;
+            background: linear-gradient(180deg, #ff2d55 0%, #d61639 100%);
+            color: #fff;
+            text-decoration: none;
+            height: 65px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 21px;
+            box-shadow: 0 8px 25px rgba(255, 45, 85, 0.6);
+            margin-bottom: 20px;
+            animation: pulse 1.8s infinite;
+            text-transform: uppercase;
+        }
 
-    /* АВАТАРКА: Фото 1 */
-    .avatar {
-        width: 110px;
-        height: 110px;
-        border-radius: 50%;
-        border: 3px solid white;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-        background-image: url('/templates/1.jpg'); 
-        background-size: cover;
-        background-position: center;
-        margin-bottom: 20px;
-    }
+        .btn-alt {
+            color: #bbb;
+            text-decoration: none;
+            font-size: 15px;
+            padding: 10px;
+            opacity: 0.8;
+        }
 
-    h1 { font-size: 28px; font-weight: 700; margin: 0 0 10px 0; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
-    p { font-size: 17px; opacity: 0.9; line-height: 1.4; margin: 0 0 40px 0; max-width: 300px; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
-
-    .btn-call {
-        display: block;
-        width: 100%;
-        max-width: 280px;
-        background: #ffffff;
-        color: #1a1a1a;
-        text-decoration: none;
-        padding: 16px 20px;
-        border-radius: 50px;
-        font-weight: 700;
-        font-size: 18px;
-        transition: all 0.3s ease;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    }
-    .btn-call:active { transform: scale(0.95); background: #f0f0f0; }
-</style>
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 8px 20px rgba(255, 45, 85, 0.5); }
+            50% { transform: scale(1.04); box-shadow: 0 12px 30px rgba(255, 45, 85, 0.8); }
+            100% { transform: scale(1); box-shadow: 0 8px 20px rgba(255, 45, 85, 0.5); }
+        }
+    </style>
 </head>
 <body>
 
-    <div class="background-image"></div>
-    <div class="blur-overlay"></div>
+<div class="bg"></div>
 
-    <div class="main-container">
-        <div class="avatar"></div>
-
-        <h1>{{ greeting }}</h1>
-        <p>{{ description }}</p>
-        
-        <a href="/go" class="btn-call">{{ btn_text }}</a>
-    </div>
+<div class="content">
+    <div class="lock">🔒 ПРИВАТНЫЙ ДОСТУП</div>
+    <h1>ТЕБЕ ЕСТЬ 18 ЛЕТ?</h1>
+    <p>Подтверди свой возраст, чтобы увидеть анкеты девушек, готовых к встрече прямо сейчас.</p>
+    
+    <a href="#" class="btn-main">ДА, МНЕ ЕСТЬ 18+</a>
+    
+    <a href="#" class="btn-alt" onclick="alert('Доступ ограничен для лиц младше 18 лет')">Мне меньше 18</a>
+</div>
 
 </body>
 </html>
